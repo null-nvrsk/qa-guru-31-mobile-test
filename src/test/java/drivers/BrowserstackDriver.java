@@ -15,11 +15,14 @@ public class BrowserstackDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
+        String browserstackUser = "maksimskomorokho_3reSti";
+        String browserstackKey = "C4Nqx2RgurSZCUaUqFMt";
+
         MutableCapabilities caps = new MutableCapabilities();
 
         // Set your access credentials
-        caps.setCapability("browserstack.user", "maksimskomorokho_3reSti");
-        caps.setCapability("browserstack.key", "C4Nqx2RgurSZCUaUqFMt");
+//        caps.setCapability("browserstack.user", browserstackUser);
+//        caps.setCapability("browserstack.key", browserstackKey);
 
         // Set URL of the application under test
         //    caps.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
@@ -39,7 +42,10 @@ public class BrowserstackDriver implements WebDriverProvider {
         // and desired capabilities defined above
         try {
             return new RemoteWebDriver(
-                    new URL("https://hub.browserstack.com/wd/hub"), caps);
+//                    new URL("https://hub.browserstack.com/wd/hub"), caps);
+                    new URL("https://" + browserstackUser + ":" + browserstackKey
+                            + "@hub.browserstack.com/wd/hub"),
+                    caps);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
