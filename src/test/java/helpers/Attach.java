@@ -30,18 +30,10 @@ public class Attach {
         return message;
     }
 
-    public static void browserConsoleLogs() {
-        if (Configuration.browser.equals("firefox")) return;
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
-    }
-
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-    public static String addVideo() {
+    public static String addVideo(String session) {
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-//                + getVideoUrl()
+                + Browserstack.videoUrl(session)
                 + "' type='video/mp4'></video></body></html>";
     }
 
