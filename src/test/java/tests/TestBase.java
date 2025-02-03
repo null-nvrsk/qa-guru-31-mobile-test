@@ -9,11 +9,18 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import screens.MainScreen;
+import screens.SearchResultScreen;
+import screens.SearchScreen;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
+
+    public MainScreen mainScreen = new MainScreen();
+    public SearchScreen searchScreen = new SearchScreen();
+    public SearchResultScreen searchResultScreen = new SearchResultScreen();
 
     @BeforeAll
     static void beforeAll() {
@@ -31,9 +38,7 @@ public class TestBase {
     @AfterEach
     void addAttachments() {
         String sessionId = Selenide.sessionId().toString();
-        System.out.println(sessionId);
 
-//        Attach.screenshotAs("Last screenshot"); // todo fix
         Attach.pageSource();
         closeWebDriver();
 
