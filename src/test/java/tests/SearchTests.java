@@ -10,7 +10,7 @@ public class SearchTests extends TestBase {
     @Test
     @DisplayName("Проверить, что есть результаты поиска")
     void searchFieldTest() {
-        mainScreen.openSearchPage();
+        mainScreen.openSearchModalWindow();
 
         searchScreen.searchValue(searchValue)
                 .verifySearchResultNotEmpty();
@@ -19,7 +19,7 @@ public class SearchTests extends TestBase {
     @Test
     @DisplayName("Проверить, что найденная страница открывается")
     void openFoundPageTest() {
-        mainScreen.openSearchPage();
+        mainScreen.openSearchModalWindow();
 
         searchScreen.searchValue(searchValue)
                 .verifySearchResultNotEmpty();
